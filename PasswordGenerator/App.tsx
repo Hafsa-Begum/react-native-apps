@@ -82,11 +82,37 @@ export default function App() {
     }
     setRandomGenerate(color);
   }
+  const passwordCharType = [
+    {
+      title: 'Lowercase',
+      type: 'lowerCase',
+      setType: setLowerCase,
+      checkboxColor: '#706fd3'
+    },
+    {
+      title: 'Uppercase',
+      type: 'upperCase',
+      setType: setUpperCase,
+      checkboxColor: '#34ace0'
+    },
+    {
+      title: 'Numbers',
+      type: 'numbers',
+      setType: setNumbers,
+      checkboxColor: '#ffda79'
+    },
+    {
+      title: 'Symbols',
+      type: 'symbols',
+      setType: setSymbols,
+      checkboxColor: '#ff793f'
+    },
+  ]
   return (
     <>
     <StatusBar backgroundColor={randomColorGenerate}/>
     <ScrollView keyboardShouldPersistTaps="handled">
-      <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container}>
         <View style={styles.formContainer}>
           <Text style={styles.headingText}>Password Generator</Text>
           <Formik
@@ -125,55 +151,20 @@ export default function App() {
               placeholderTextColor="#fff"
               />
           </View>
-          <View style={styles.inputWrapper}>
-            <Text style={styles.heading}>Include Lowercase</Text>
-            <BouncyCheckbox
-              isChecked={lowerCase}
-              disableText
-              fillColor="#706fd3"
-              useBuiltInState={false}
-              onPress={() => {
-                    setLowerCase(!lowerCase);
-              }}
-            />
-          </View>
-          <View style={styles.inputWrapper}>
-          <Text style={styles.heading}>Include Uppercase</Text>
-            <BouncyCheckbox
-              isChecked={upperCase}
-              disableText
-              fillColor="#34ace0"
-              useBuiltInState={false}
-              onPress={() => {
-                    setUpperCase(!upperCase);
-              }}
-            />
-          </View>
-          <View style={styles.inputWrapper}>
-          <Text style={styles.heading}>Include Numbers</Text>
-            <BouncyCheckbox
-              isChecked={numbers}
-              disableText
-              fillColor="#ffda79"
-              useBuiltInState={false}
-              onPress={() => {
-                    setNumbers(!numbers);
-              }}
-            />
-          </View>
-          <View style={styles.inputWrapper}>
-          <Text style={styles.heading}>Include Symbols</Text>
-            <BouncyCheckbox
-              isChecked={symbols}
-              disableText
-              fillColor="#ff793f"
-              useBuiltInState={false}
-              onPress={() => {
-                    setSymbols(!symbols);
-              }}
-            />
-          </View>
-
+          {
+            passwordCharType.map(({title, type, setType, checkboxColor}, index) => (
+              <View key={index} style={styles.inputWrapper}>
+                <Text style={styles.heading}>Include {title}</Text>
+                <BouncyCheckbox
+                  isChecked={type}
+                  disableText
+                  fillColor={checkboxColor}
+                  useBuiltInState={false}
+                  onPress={() => setType(!type)}
+                />
+              </View>
+            ))
+          }
           <View style={styles.formActions}>
             <TouchableOpacity
             disabled={!isValid}
