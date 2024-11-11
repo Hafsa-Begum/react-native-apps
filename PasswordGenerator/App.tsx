@@ -5,7 +5,8 @@ import {
   ScrollView, 
   View, 
   TouchableOpacity,
-  TextInput
+  TextInput,
+  StatusBar
  } from 'react-native'
 import React, { useState } from 'react'
 import * as Yup from 'yup';
@@ -26,6 +27,8 @@ export default function App() {
   const [upperCase, setUpperCase] = useState(false)
   const [numbers, setNumbers] = useState(false)
   const [symbols, setSymbols] = useState(false)
+  const [randomColorGenerate, setRandomGenerate] = useState("#000000");
+
 
   const generatePasswordString = (passwordLength: number)=>{
     let characterList = '';
@@ -70,7 +73,18 @@ export default function App() {
     setNumbers(false)
     setSymbols(false)
   }
+
+  const generateColor = () =>{
+    const hexColor = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += hexColor[Math.floor(Math.random()*16)];
+    }
+    setRandomGenerate(color);
+  }
   return (
+    <>
+    <StatusBar backgroundColor={randomColorGenerate}/>
     <ScrollView keyboardShouldPersistTaps="handled">
       <SafeAreaView style={styles.container}>
         <View style={styles.formContainer}>
@@ -190,16 +204,25 @@ export default function App() {
           </View>
         ) : null}
       </SafeAreaView>
+      <View style={[styles.changeBg, {backgroundColor: randomColorGenerate}]}>
+      <TouchableOpacity onPress={generateColor} style={styles.changeBtn}>
+        <Text>Change Color</Text>
+      </TouchableOpacity>
+      </View>
     </ScrollView>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
   container:{
-    width: 415,
+    // width: 415,
     paddingHorizontal: 12,
     backgroundColor: "#2c2c54",
-    paddingBottom: 60
+    paddingBottom: 60,
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center'
 
   },
   formContainer:{
@@ -294,5 +317,28 @@ const styles = StyleSheet.create({
   },
   resultText:{
     fontSize: 16,
+  },
+  changeBg:{
+    height: 415,
+    paddingHorizontal: 12,
+    backgroundColor: "#2c2c54",
+    paddingBottom: 60,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  changeBtn:{
+    marginTop: 38,
+    backgroundColor: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 8
+  },
+  changeBtnText: {
+    color: '#000000',
+    fontSize: 16,
+    fontWeight: 'bold',
   }
 })
