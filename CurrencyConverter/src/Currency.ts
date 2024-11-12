@@ -1,0 +1,22 @@
+export const currenciesInTaka:Currency[] = [
+    { country: "United States", currency: "USD", value: 0.011, flag: "🇺🇸", symbol: "$" },
+    { country: "Eurozone", currency: "EUR", value: 0.010, flag: "🇪🇺", symbol: "€" },
+    { country: "United Kingdom", currency: "GBP", value: 0.0085, flag: "🇬🇧", symbol: "£" },
+    { country: "Japan", currency: "JPY", value: 1.47, flag: "🇯🇵", symbol: "¥" },
+    { country: "India", currency: "INR", value: 0.92, flag: "🇮🇳", symbol: "₹" },
+    { country: "Australia", currency: "AUD", value: 0.017, flag: "🇦🇺", symbol: "A$" },
+    { country: "Canada", currency: "CAD", value: 0.015, flag: "🇨🇦", symbol: "C$" },
+    { country: "Switzerland", currency: "CHF", value: 0.010, flag: "🇨🇭", symbol: "CHF" },
+    { country: "China", currency: "CNY", value: 0.078, flag: "🇨🇳", symbol: "¥" },
+    { country: "Brazil", currency: "BRL", value: 0.055, flag: "🇧🇷", symbol: "R$" },
+    { country: "Russia", currency: "RUB", value: 0.90, flag: "🇷🇺", symbol: "₽" },
+    { country: "South Africa", currency: "ZAR", value: 0.20, flag: "🇿🇦", symbol: "R" },
+    { country: "Saudi Arabia", currency: "SAR", value: 0.041, flag: "🇸🇦", symbol: "﷼" },
+    { country: "South Korea", currency: "KRW", value: 14.3, flag: "🇰🇷", symbol: "₩" },
+    { country: "Mexico", currency: "MXN", value: 0.19, flag: "🇲🇽", symbol: "$" },
+    { country: "Turkey", currency: "TRY", value: 0.30, flag: "🇹🇷", symbol: "₺" },
+    { country: "Singapore", currency: "SGD", value: 0.015, flag: "🇸🇬", symbol: "S$" },
+    { country: "United Arab Emirates", currency: "AED", value: 0.040, flag: "🇦🇪", symbol: "د.إ" },
+    { country: "Norway", currency: "NOK", value: 0.11, flag: "🇳🇴", symbol: "kr" },
+    { country: "Sweden", currency: "SEK", value: 0.12, flag: "🇸🇪", symbol: "kr" }
+  ];
