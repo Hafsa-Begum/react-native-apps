@@ -70,6 +70,11 @@ export default function App() {
       type: 'rectangle',
       bgColor: rectangleBg,
     },
+    {
+      id: 6,
+      type: 'leaf',
+      bgColor: leafBg,
+    },
   ]
   const getShapeStyle = (type:any) => {
     console.log("type", type)
@@ -92,7 +97,9 @@ export default function App() {
     <>
     <StatusBar backgroundColor={randomColorGenerate}/>
       <View style={[styles.changeBg, {backgroundColor: randomColorGenerate}]}>
-        
+        <View>
+          <Text style={styles.makeFun}>Make Fun with Changing Colors</Text>
+        </View>
         <View style={styles.shapes}>
         
         <FlatList
@@ -140,11 +147,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  makeFun:{
+    marginTop: 18,
+    fontSize: 20,
+    color: "#ffffff",
+    fontWeight: 'bold'
+  },
   changeBtn:{
     marginTop: 8,
-    marginBottom: 28,
+    marginBottom: 50,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
+    paddingHorizontal: 36,
     paddingVertical: 10,
     borderRadius: 8
   },
