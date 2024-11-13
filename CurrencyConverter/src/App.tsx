@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { CurrencyButton } from './components/CurrencyButton';
 import { currenciesInTaka } from './Currency';
+import Snackbar from 'react-native-snackbar';
 
 function App(): React.JSX.Element {
  const Data = currenciesInTaka;
@@ -19,9 +20,28 @@ function App(): React.JSX.Element {
  const [result, setResult] = useState('');
 
  const changeCurrency = (targetCurrency:Currency) =>{
-  const currency = parseFloat(inputValue) * targetCurrency.value
-  const showCurrency = `${targetCurrency.symbol} ${currency.toFixed(2)}`
-  setResult(showCurrency)
+  if(!inputValue){
+    return Snackbar.show({
+      text: 'Enter a number!',
+      duration: Snackbar.LENGTH_SHORT,
+      action: {
+        backgroundColor: 'green',
+        textColor: 'white',
+        marginBottom: 100
+      },
+    });
+  }
+  if(!isNaN(inputValue)){
+    const currency = parseFloat(inputValue) * targetCurrency.value
+    const showCurrency = `${targetCurrency.symbol} ${currency.toFixed(2)}`
+    setResult(showCurrency)
+  }
+  else{
+    return Snackbar.show({
+      text: 'valid input required.',
+      duration: Snackbar.LENGTH_SHORT,
+    });
+  }
  }
 
   return (
@@ -29,13 +49,17 @@ function App(): React.JSX.Element {
       <StatusBar/>
       {/* <ScrollView> */}
         <View>
-          <View>
+          <Text style={styles.sectionTitle}>Currency Converter</Text>
+          <View style={styles.topContainer}>
             <TextInput
+            style={styles.inputField}
             value={inputValue}
             onChangeText={setInputValue}
+            maxLength={16}
+            placeholder="Enter value"
             />
             {result &&
-            <Text>{result}</Text>
+            <Text style={styles.result}>Converted - {result}</Text>
             }
           </View>
           <View style={styles.bottomContainer}>
@@ -58,21 +82,30 @@ function App(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
+  topContainer: {
     marginTop: 32,
-    paddingHorizontal: 24,
+    marginHorizontal: 80
   },
   sectionTitle: {
+    marginTop: 32,
     fontSize: 24,
     fontWeight: '600',
+    textAlign: 'center'
   },
-  sectionDescription: {
+  inputField: {
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+    borderWidth:1,
+    paddingHorizontal: 54,
+    borderRadius: 8,
+    textAlign: 'center'
   },
-  highlight: {
+  result: {
     fontWeight: '700',
+    fontSize: 18,
+    marginTop: 14,
+    textAlign: 'center'
   },
 });
 

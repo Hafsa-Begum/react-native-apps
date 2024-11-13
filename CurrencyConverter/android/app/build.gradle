@@ -116,4 +116,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    // Use correct syntax for project dependency
+    implementation project(':react-native-snackbar')
 }

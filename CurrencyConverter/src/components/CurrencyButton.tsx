@@ -41,14 +41,15 @@ export function CurrencyButton({country, currency ,flag}: CurrencyProps): React.
       flexDirection: 'row',
       marginTop: 32,
       paddingHorizontal: 24,
-      borderWidth: 1,
+      borderWidth: 0.5,
       marginHorizontal: 10,
-      borderRadius: 10
+      borderRadius: 10,
+      borderColor: '#4a4a4a'
     },
     country: {
       fontSize: 18,
       fontWeight: '600',
-      width: 140
+      width: 190
     },
     currency: {
       fontSize: 18,
