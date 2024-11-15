@@ -1,0 +1,10 @@
+{
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "node16",
+    "baseUrl": ".",
+    "paths": {
+      "react-native": ["node_modules/react-native"]
+    }
+  }
+}

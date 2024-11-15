@@ -78,9 +78,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.plantsnap"
+    namespace "com.spotifyclone"
     defaultConfig {
-        applicationId "com.plantsnap"
+        applicationId "com.spotifyclone"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -117,8 +117,4 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-    implementation project(':react-native-snackbar')
-    implementation project(':react-native-sound')
-    implementation project(':react-native-vector-icons')
-
 }
