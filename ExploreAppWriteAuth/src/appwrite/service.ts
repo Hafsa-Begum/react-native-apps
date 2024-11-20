@@ -3,8 +3,11 @@ import Config from 'react-native-config'
 import Snackbar from 'react-native-snackbar'
 
 const appwriteClient = new Client()
-const APPWRITE_END_POINT: string = Config.APPWRITE_END_POINT!;
-const APPWRITE_PROJECT_ID: string = Config.APPWRITE_PROJECT_ID!;
+const APPWRITE_END_POINT: string = 'https://cloud.appwrite.io/v1';
+const APPWRITE_PROJECT_ID: string = '673c5693002b357902b9'
+
+console.log('APPWRITE_END_POINT:', Config.APPWRITE_END_POINT);
+console.log('APPWRITE_PROJECT_ID:', Config.APPWRITE_PROJECT_ID);
 
 type CreateUserAccount = {
     email: string,
@@ -25,6 +28,8 @@ class AppWriteService{
         .setProject(APPWRITE_PROJECT_ID)
 
         this.account = new Account(appwriteClient)
+        console.log('account',this.account);
+
     }
 
     //create a new record user inside appwrite
@@ -53,7 +58,7 @@ class AppWriteService{
 
     async login({email, password} : LoginUserAccount){
         try {
-            return await this.account.createEmailSession(email, password)
+            return await this.account.createEmailPasswordSession(email, password)
         } catch (error) {
             Snackbar.show({
                 text: String(error),
